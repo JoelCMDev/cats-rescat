@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cats Rescat: Protegiendo gatos callejeros en Jesús con amor y dedicación">
+    <meta name="keywords" content="gatos, rescate, animales, Jesús, adopción, esterilización">
+    <meta name="author" content="Cats Rescat">
+    <title>Cats Rescat - Protegiendo gatos callejeros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link href="./assets/css/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Unified styling for carousel items */
+        .carousel-item {
+            height: 350px;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e5e7eb; /* bg-gray-200 */
+        }
+        .carousel-item img, .carousel-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item:hover img, .carousel-item:hover video {
+            transform: scale(1.05);
+        }
+        /* Fullscreen video styling */
+        .carousel-item video.fullscreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) !important;
+            width: auto;
+            height: auto;
+            max-width: 90vw;
+            max-height: 90vh;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+            transform-origin: center;
+            aspect-ratio: auto; /* Preserve intrinsic aspect ratio */
+        }
+        /* Ensure video resets properly when exiting fullscreen */
+        .carousel-item video {
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 300px;
+            }
+        }
+
+        /* Swiper pagination styling */
+        .swiper-container {
+            padding-bottom: 40px;
+        }
+        .swiper-pagination {
+            position: relative;
+            bottom: -10px !important;
+            padding-top: 10px;
+            text-align: center;
+        }
+        .swiper-pagination-bullet {
+            background: #5eb59b;
+            opacity: 0.7;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+        }
+        .swiper-pagination-bullet-active {
+            background: #5eb59b;
+            opacity: 1;
+        }
+
+        /* Mobile menu styling */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus, input:focus, textarea:focus {
+            outline: 2px solid #5eb59b;
+            outline-offset: 2px;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-primary to-primary-dark shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fas fa-paw text-white text-3xl mr-3 animate-float"></i>
+                <h1 class="text-white text-2xl font-bold tracking-wide">CATS RESCAT</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#inicio" class="text-white hover:text-gray-200 transition duration-300">Inicio</a></li>
+                    <li><a href="#galeria" class="text-white hover:text-gray-200 transition duration-300">Galería</a></li>
+                    <li><a href="#nosotros" class="text-white hover:text-gray-200 transition duration-300">Nosotros</a></li>
+                    <li><a href="#contacto" class="text-white hover:text-gray-200 transition duration-300">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-white text-2xl focus:outline-none" aria-label="Abrir menú móvil" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <nav class="mobile-menu hidden md:hidden absolute top-16 left-0 right-0 bg-primary p-4 z-40" id="mobile-menu">
+            <ul class="flex flex-col space-y-4 text-center">
+                <li><a href="#inicio" class="text-white hover:text-gray-200 transition duration-300">Inicio</a></li>
+                <li><a href="#galeria" class="text-white hover:text-gray-200 transition duration-300">Galería</a></li>
+                <li><a href="#nosotros" class="text-white hover:text-gray-200 transition duration-300">Nosotros</a></li>
+                <li><a href="#contacto" class="text-white hover:text-gray-200 transition duration-300">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-96 flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <img src="./assets/img/hero-bg.jpg" alt="Gato rescatado" class="absolute w-full h-full object-cover" loading="lazy">
+        <div class="relative z-10 text-center px-6 animate-fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Rescatando vidas felinas</h2>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto">Protegiendo a los gatos callejeros de Jesús con amor y dedicación</p>
+            <a href="#contacto" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg inline-block">Colabora con nosotros</a>
+        </div>
+    </section>
+
+    <!-- Carrusel con Swiper -->
+    <section id="galeria" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h552 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Nuestro Trabajo</h2>
+            
+            <div class="swiper mySwiper swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Video slide -->
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <video controls class="w-full" aria-label="Video de gatos rescatados">
+                                <source src="./assets/video/gatete-video.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Image slides -->
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete1.jpeg" alt="Gato rescatado 1" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete2.jpeg" alt="Gato rescatado 2" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete3.jpeg" alt="Gato rescatado 3" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete4.jpeg" alt="Gato rescatado 4" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete5.jpeg" alt="Gato rescatado 5" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete6.jpeg" alt="Gato rescatado 6" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete7.jpeg" alt="Gato rescatado 7" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete8.jpeg" alt="Gato rescatado 8" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="carousel-item">
+                            <img src="./assets/img/gatete9.jpeg" alt="Gato rescatado 9" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next text-primary"></div>
+                <div class="swiper-button-prev text-primary"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Sobre Nosotros</h2>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg mb-8 transform transition duration-500 hover:shadow-xl animate-fade-in">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        En Cats Rescat somos personas que de forma voluntaria, velamos por el bienestar de los gatos a los que les toca vivir en las calles, ya sea por abandono de gatos adultos, hembras embarazadas o camadas indeseadas. O colonias no controladas con superpoblación de estos hermosos animales.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-primary text-white p-8 rounded-xl shadow-lg transform transition duration-500 hover:scale-105 animate-fade-in">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-stethoscope mr-3"></i> Método CER
+                        </h3>
+                        <p class="mb-4">Aplicamos el método CER: captura-esterilización-retorno de gatos a la zona en la que viven.</p>
+                        <p>Tenemos algunos puntos de alimentación, donde pueden contar con agua, comida y un lugar para descansar o refugiarse.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg transform transition duration-500 hover:scale-105 animate-fade-in">
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-primary">
+                            <i class="fas fa-heart mr-3"></i> Nuestro Compromiso
+                        </h3>
+                        <p class="mb-4 text-gray-600">También brindamos atención veterinaria a los enfermos y buscamos acogida y posterior adopción a los cachorros, gatos mansos, abandonados...</p>
+                        <p class="text-gray-600">Estamos en Jesús y contamos con la colaboración del EMD.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-white after:mx-auto after:mt-4">Contacto</h2>
+            
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Información de contacto</h3>
+                    <p class="mb-6">Estamos ubicados en Jesús y siempre estamos dispuestos a ayudar a más gatos necesitados.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <p>Calle de los Gatos, 123, Jesús</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3"></i>
+                            <p><a href="tel:+34123456789" class="hover:underline">+34 123 456 789</a></p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3"></i>
+                            <p><a href="mailto:info@catsrescat.com" class="hover:underline">info@catsrescat.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="name" class="sr-only">Nombre</label>
+                            <input type="text" id="name" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800">
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" id="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Mensaje</label>
+                            <textarea id="message" placeholder="Mensaje" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800"></textarea>
+                        </div>
+                        <button type="button" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition duration-300 transform hover:scale-105" onclick="alert('Formulario enviado. ¡Gracias por contactarnos!')">Enviar mensaje</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-paw text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">CATS RESCAT</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">Protegiendo gatos callejeros desde 2023</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 Cats Rescat. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+            const isOpen = mobileMenu.classList.contains('active');
+            menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú móvil' : 'Abrir menú móvil');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-label', 'Abrir menú móvil');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Video fullscreen toggle
+        const video = document.querySelector('.carousel-item video');
+        video.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!video.classList.contains('fullscreen')) {
+                video.classList.add('fullscreen');
+                video.style.transform = 'translate(-50%, -50%)';
+                video.play();
+            } else {
+                video.classList.remove('fullscreen');
+                video.style.transform = 'none';
+                video.style.width = '100%';
+                video.style.height = '100%';
+                video.style.objectFit = 'cover';
+                video.pause();
+            }
+        });
+
+        // Ensure video plays in any slide position
+        video.addEventListener('canplay', () => {
+            video.style.pointerEvents = 'auto';
+        });
+
+        // Prevent Swiper from intercepting video clicks
+        video.addEventListener('mousedown', (e) => {
+            e.stopPropagation();
+        });
+
+        // Reset video styles on transition end to prevent bugs
+        video.addEventListener('transitionend', () => {
+            if (!video.classList.contains('fullscreen')) {
+                video.style.transform = 'none';
+                video.style.width = '100%';
+                video.style.height = '100%';
+                video.style.objectFit = 'cover';
+            }
+        });
+    </script>
+</body>
+</html>
