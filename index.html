@@ -6,16 +6,51 @@
     <meta name="description" content="Cats Rescat: Protegiendo gatos callejeros en Jesús con amor y dedicación">
     <meta name="keywords" content="gatos, rescate, animales, Jesús, adopción, esterilización">
     <meta name="author" content="Cats Rescat">
-    <title>Cats Rescat - Protegiendo gatos callejeros</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/logo.png" type="image/png">
+    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/png">
+
+    <title>Correos Rescat - Protege gatos callejeros</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link href="./assets/css/tailwind.min.css" rel="stylesheet">
+
     <style>
+        /* Logo styles */
+        .logo {
+            height: 60px;
+            width: auto;
+            max-width: 180px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .logo {
+                height: 48px;
+                max-width: 144px;
+            }
+        }
+
+        /* Footer logo */
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        /* Carousel styles */
         .carousel-item {
             height: 350px;
             overflow: hidden;
             border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,10 +63,26 @@
             transition: transform 0.5s ease;
         }
         .carousel-item:hover img, .carousel-item:hover video {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
+
+        /* Vertical video container */
+        .vertical-video-container {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            background: #000;
+        }
+        .vertical-video {
+            height: 100%;
+            width: auto;
+        }
+
         /* Fullscreen video styling */
-        .carousel-item video.fullscreen {
+        .vertical-video.fullscreen {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -41,52 +92,72 @@
             max-width: 90vw;
             max-height: 90vh;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0,0,0, 0.8);
             object-fit: contain;
             transform-origin: center;
-            aspect-ratio: auto; /* Preserve intrinsic aspect ratio */
+            aspect-ratio: auto;
         }
-        /* Ensure video resets properly when exiting fullscreen */
-        .carousel-item video {
+        .vertical-video {
             transition: all 0.3s ease;
         }
+
         @media (max-width: 768px) {
             .carousel-item {
                 height: 300px;
             }
         }
 
-        /* Swiper pagination styling */
+        /* Swiper styles */
         .swiper-container {
             padding-bottom: 40px;
         }
-        .swiper-pagination {
+        .swiper-wrapper {
             position: relative;
             bottom: -10px !important;
             padding-top: 10px;
             text-align: center;
         }
-        .swiper-pagination-bullet {
+        .swiper-button {
             background: #5eb59b;
             opacity: 0.7;
             width: 10px;
             height: 10px;
             margin: 0 5px;
         }
-        .swiper-pagination-bullet-active {
+        .swiper-button {
             background: #5eb59b;
             opacity: 1;
         }
 
-        /* Mobile menu styling */
+        /* Mobile menu */
         .mobile-menu {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             transform: translateY(-100%);
             opacity: 0;
+            visibility: hidden;
         }
         .mobile-menu.active {
             transform: translateY(0);
             opacity: 1;
+            visibility: visible;
+        }
+
+        /* Team section */
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
 
         /* Smooth scroll behavior */
@@ -100,30 +171,29 @@
             outline-offset: 2px;
         }
 
-        /* Animation keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Forçar espai superior del footer i marge inferior de la secció Contacto */
+        footer {
+            padding-top: 2rem !important;
         }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
+        section#contacto {
+            margin-bottom: 3rem !important;
         }
     </style>
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <!-- Header -->
     <header class="bg-gradient-to-r from-primary to-primary-dark shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="container mx-auto px-6 py-3 flex items-center justify-between">
             <div>
-                <a href="#inicio">
+                <a href="#galeria" class="flex items-center">
                     <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="logo">
                 </a>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-8">
-                    <li><a href="#inicio" class="text-white hover:text-gray-200 transition duration-300">Inicio</a></li>
                     <li><a href="#galeria" class="text-white hover:text-gray-200 transition duration-300">Galería</a></li>
                     <li><a href="#nosotros" class="text-white hover:text-gray-200 transition duration-300">Nosotros</a></li>
+                    <li><a href="#teaming" class="text-white hover:text-gray-200 transition duration-300">Teaming</a></li>
                     <li><a href="#contacto" class="text-white hover:text-gray-200 transition duration-300">Contacto</a></li>
                 </ul>
             </nav>
@@ -132,45 +202,36 @@
             </button>
         </div>
         <!-- Mobile Menu -->
-        <nav class="mobile-menu hidden md:hidden absolute top-16 left-0 right-0 bg-primary p-4 z-40" id="mobile-menu">
+        <nav class="mobile-menu md:hidden absolute top-full left-0 right-0 bg-primary p-4 z-40 shadow-lg" id="mobile-menu">
             <ul class="flex flex-col space-y-4 text-center">
-                <li><a href="#inicio" class="text-white hover:text-gray-200 transition duration-300">Inicio</a></li>
-                <li><a href="#galeria" class="text-white hover:text-gray-200 transition duration-300">Galería</a></li>
-                <li><a href="#nosotros" class="text-white hover:text-gray-200 transition duration-300">Nosotros</a></li>
-                <li><a href="#contacto" class="text-white hover:text-gray-200 transition duration-300">Contacto</a></li>
+                <li><a href="#galeria" class="text-white hover:text-gray-200 transition duration-300 block py-2">Galería</a></li>
+                <li><a href="#nosotros" class="text-white hover:text-gray-200 transition duration-300 block py-2">Nosotros</a></li>
+                <li><a href="#teaming" class="text-white hover:text-gray-200 transition duration-300 block py-2">Teaming</a></li>
+                <li><a href="#contacto" class="text-white hover:text-gray-200 transition duration-300 block py-2">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative h-96 flex items-center justify-center bg-gray-900 overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <img src="./assets/img/hero-bg.jpg" alt="Gato rescatado" class="absolute w-full h-full object-cover" loading="lazy">
-        <div class="relative z-10 text-center px-6 animate-fade-in">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Rescatando vidas felinas</h2>
-            <p class="text-xl text-white mb-8 max-w-2xl mx-auto">Protegiendo a los gatos callejeros de Jesús con amor y dedicación</p>
-            <a href="#contacto" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg inline-block">Colabora con nosotros</a>
-        </div>
-    </section>
-
     <!-- Carrusel con Swiper -->
     <section id="galeria" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h552 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Nuestro Trabajo</h2>
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Nuestro Trabajo</h2>
             
             <div class="swiper mySwiper swiper-container">
                 <div class="swiper-wrapper">
-                    <!-- Video slide -->
+                    <!-- Video vertical -->
                     <div class="swiper-slide">
                         <div class="carousel-item">
-                            <video controls class="w-full" aria-label="Video de gatos rescatados">
-                                <source src="./assets/video/gatete-video.mp4" type="video/mp4">
-                                Tu navegador no soporta videos HTML5.
-                            </video>
+                            <div class="vertical-video-container">
+                                <video controls class="vertical-video" aria-label="Video de gatos rescatados">
+                                    <source src="./assets/video/gatete-video.mp4" type="video/mp4">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image slides -->
+                    <!-- Imágenes -->
                     <div class="swiper-slide">
                         <div class="carousel-item">
                             <img src="./assets/img/gatete1.jpeg" alt="Gato rescatado 1" loading="lazy">
@@ -257,8 +318,31 @@
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-16 bg-primary text-white">
+    <!-- Sección Teaming -->
+    <section id="teaming" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Ayúdanos con Teaming</h2>
+                
+                <div class="bg-gray-100 p-8 rounded-xl shadow-lg mb-8 animate-fade-in">
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Rescatamos, alimentamos, acogemos y damos en adopción a mininos que malviven en las calles. Para todo ello, necesitamos comprar pienso, leche maternizada para cachorros sin madre, medicamentos, visitas al veterinario, tratamientos...
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Necesitamos ayuda, solas no podemos y, de esta manera, si cada uno de nuestros seguidores dona 1 eurito al mes, podremos hacer grandes cosas por los peludos.
+                    </p>
+                    <div class="text-center mt-8">
+                        <a href="https://www.teaming.net/catsrescat" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg inline-block">
+                            Únete a nuestro Teaming
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-16 bg-primary text-white mb-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-white after:mx-auto after:mt-4">Contacto</h2>
             
@@ -270,7 +354,7 @@
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                            <p>Calle de los Gatos, 123, Jesús</p>
+                            <p>Jesús, Tortosa</p>
                         </div>
                         <div class="flex items-start">
                             <i class="fas fa-phone-alt mt-1 mr-3"></i>
@@ -278,62 +362,70 @@
                         </div>
                         <div class="flex items-start">
                             <i class="fas fa-envelope mt-1 mr-3"></i>
-                            <p><a href="mailto:info@catsrescat.com" class="hover:underline">info@catsrescat.com</a></p>
+                            <p><a href="mailto:catsrescat.ebre@gmail.com" class="hover:underline">catsrescat.ebre@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="space-y-4">
+                    <form id="contact-form" class="space-y-4">
                         <div>
                             <label for="name" class="sr-only">Nombre</label>
-                            <input type="text" id="name" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800">
+                            <input type="text" id="name" name="name" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required>
                         </div>
                         <div>
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" id="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800">
+                            <input type="email" id="email" name="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required>
                         </div>
                         <div>
                             <label for="message" class="sr-only">Mensaje</label>
-                            <textarea id="message" placeholder="Mensaje" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800"></textarea>
+                            <textarea id="message" name="message" placeholder="Mensaje" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required></textarea>
                         </div>
-                        <button type="button" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition duration-300 transform hover:scale-105" onclick="alert('Formulario enviado. ¡Gracias por contactarnos!')">Enviar mensaje</button>
-                    </div>
+                        <button type="submit" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition duration-300 transform hover:scale-105">Enviar mensaje</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-900 text-white pt-20 pb-6">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <a href="#inicio">
-                        <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="logo">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                <!-- Logo y descripción -->
+                <div class="mb-8 md:mb-0 text-center md:text-left max-w-xs">
+                    <a href="#galeria" class="inline-block">
+                        <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="footer-logo mx-auto md:mx-0">
                     </a>
-                    <p class="text-gray-400 mt-2">Protegiendo gatos callejeros desde 2023</p>
+                    <p class="mt-4 text-gray-300">Protegiendo gatos callejeros en Jesús con amor y dedicación desde 2023.</p>
                 </div>
-                
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition duration-300 text-xl" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+    
+                <!-- Redes sociales y contacto -->
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4 text-primary border-b border-primary pb-2">Conecta con nosotros</h3>
+                    <div class="flex justify-center md:justify-start space-x-6 mb-4">
+                        <a href="https://www.instagram.com/cats_rescat?igsh=MTI0cG0waTQzcGt0OQ==" target="_blank" rel="noopener noreferrer"
+                           class="bg-gray-800 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                           aria-label="Instagram">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/16B4nv6ats/" target="_blank" rel="noopener noreferrer"
+                           class="bg-gray-800 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                           aria-label="Facebook">
+                            <i class="fab fa-facebook-f text-2xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+    
+            <!-- Derechos de autor -->
+            <div class="border-t border-gray-800 mt-12 pt-6 text-center text-gray-400">
                 <p>© 2025 Cats Rescat. Todos los derechos reservados.</p>
+                <p class="mt-1 text-sm">Hecho con <i class="fas fa-heart text-red-500"></i> por amantes de los gatos</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         // Initialize Swiper
@@ -362,8 +454,8 @@
         // Mobile menu toggle
         const menuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('active');
             const isOpen = mobileMenu.classList.contains('active');
             menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú móvil' : 'Abrir menú móvil');
@@ -371,19 +463,28 @@
             menuToggle.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 mobileMenu.classList.remove('active');
                 menuToggle.setAttribute('aria-label', 'Abrir menú móvil');
                 menuToggle.querySelector('i').classList.add('fa-bars');
                 menuToggle.querySelector('i').classList.remove('fa-times');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
         // Video fullscreen toggle
-        const video = document.querySelector('.carousel-item video');
+        const video = document.querySelector('.vertical-video');
         video.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -394,9 +495,9 @@
             } else {
                 video.classList.remove('fullscreen');
                 video.style.transform = 'none';
-                video.style.width = '100%';
+                video.style.width = 'auto';
                 video.style.height = '100%';
-                video.style.objectFit = 'cover';
+                video.style.objectFit = '';
                 video.pause();
             }
         });
@@ -415,9 +516,40 @@
         video.addEventListener('transitionend', () => {
             if (!video.classList.contains('fullscreen')) {
                 video.style.transform = 'none';
-                video.style.width = '100%';
+                video.style.width = 'auto';
                 video.style.height = '100%';
-                video.style.objectFit = 'cover';
+                video.style.objectFit = '';
+            }
+        });
+
+        // Handle contact form submission with mailto
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Additional validation (HTML5 required already enforces non-empty)
+            if (!name || !email || !message) {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+
+            // Create mailto link
+            const subject = encodeURIComponent('Consulta desde el formulario de Cats Rescat');
+            const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}`);
+            const mailtoLink = `mailto:joelcalvet@iesebre.com?subject=${subject}&body=${body}`;
+
+            // Open mailto link
+            try {
+                window.location.href = mailtoLink;
+                setTimeout(() => {
+                    alert('Se ha abierto tu cliente de correo. Por favor, revisa y envía el mensaje.');
+                }, 500);
+            } catch (error) {
+                alert('No se pudo abrir el cliente de correo. Por favor, envía un correo manualmente a catsrescat.ebre@gmail.com.');
             }
         });
     </script>
