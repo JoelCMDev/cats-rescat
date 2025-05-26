@@ -11,7 +11,7 @@
     <link rel="icon" href="./assets/img/logo.png" type="image/png">
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/png">
 
-    <title>Correos Rescat - Protege gatos callejeros</title>
+    <title>Cats Rescat</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
@@ -171,12 +171,9 @@
             outline-offset: 2px;
         }
 
-        /* Forçar espai superior del footer i marge inferior de la secció Contacto */
-        footer {
-            padding-top: 2rem !important;
-        }
+        /* Ajustar marge inferior de la secció Contacto */
         section#contacto {
-            margin-bottom: 3rem !important;
+            margin-bottom: 0 !important;
         }
     </style>
 </head>
@@ -341,56 +338,70 @@
         </div>
     </section>
 
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="py-16 bg-primary text-white mb-12">
+    <section id="contacto" class="py-16 bg-primary text-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-white after:mx-auto after:mt-4">Contacto</h2>
             
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Información de contacto</h3>
-                    <p class="mb-6">Estamos ubicados en Jesús y siempre estamos dispuestos a ayudar a más gatos necesitados.</p>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-paw mr-3"></i> ¿Cómo ayudarnos?
+                    </h3>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                            <p>Jesús, Tortosa</p>
+                            <div class="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Ubicación</h4>
+                                <p>Jesús, Tortosa</p>
+                            </div>
                         </div>
+                        
                         <div class="flex items-start">
-                            <i class="fas fa-phone-alt mt-1 mr-3"></i>
-                            <p><a href="tel:+34123456789" class="hover:underline">+34 123 456 789</a></p>
+                            <div class="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Correo electrónico</h4>
+                                <p><a href="mailto:catsrescat.ebre@gmail.com" class="hover:underline hover:text-gray-200 transition">catsrescat.ebre@gmail.com</a></p>
+                            </div>
                         </div>
+                        
                         <div class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3"></i>
-                            <p><a href="mailto:catsrescat.ebre@gmail.com" class="hover:underline">catsrescat.ebre@gmail.com</a></p>
+                            <div class="bg-white/20 p-3 rounded-full mr-4 flex-shrink-0">
+                                <i class="fas fa-hand-holding-heart text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Otras formas de ayudar</h4>
+                                <p class="mb-2">- Donaciones de alimento o materiales</p>
+                                <p class="mb-2">- Hogares de acogida temporal</p>
+                                <p>- Adopción responsable</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <form id="contact-form" class="space-y-4">
+                <div class="bg-white p-8 rounded-xl shadow-lg transform transition hover:shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Escríbenos</h3>
+                    <form id="contact-form" class="space-y-5">
                         <div>
-                            <label for="name" class="sr-only">Nombre</label>
-                            <input type="text" id="name" name="name" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensaje *</label>
+                            <textarea id="message" name="message" placeholder="¿Cómo podemos ayudarte?" rows="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required></textarea>
                         </div>
-                        <div>
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required>
-                        </div>
-                        <div>
-                            <label for="message" class="sr-only">Mensaje</label>
-                            <textarea id="message" name="message" placeholder="Mensaje" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-800" required></textarea>
-                        </div>
-                        <button type="submit" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg transition duration-300 transform hover:scale-105">Enviar mensaje</button>
+                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-lg">
+                            Enviar mensaje <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white pt-20 pb-6">
+    <footer class="bg-gray-900 text-white pt-6 pb-6">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-4 md:gap-8">
                 <!-- Logo y descripción -->
                 <div class="mb-8 md:mb-0 text-center md:text-left max-w-xs">
                     <a href="#galeria" class="inline-block">
@@ -402,7 +413,7 @@
                 <!-- Redes sociales y contacto -->
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-xl font-bold mb-4 text-primary border-b border-primary pb-2">Conecta con nosotros</h3>
-                    <div class="flex justify-center md:justify-start space-x-6 mb-4">
+                    <div class="flex justify-center md:justify-start space-x-4 sm:space-x-6 mb-4">
                         <a href="https://www.instagram.com/cats_rescat?igsh=MTI0cG0waTQzcGt0OQ==" target="_blank" rel="noopener noreferrer"
                            class="bg-gray-800 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                            aria-label="Instagram">
@@ -450,7 +461,7 @@
                 }
             }
         });
-
+    
         // Mobile menu toggle
         const menuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -462,7 +473,7 @@
             menuToggle.querySelector('i').classList.toggle('fa-bars');
             menuToggle.querySelector('i').classList.toggle('fa-times');
         });
-
+    
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
@@ -472,17 +483,36 @@
                 menuToggle.querySelector('i').classList.remove('fa-times');
             }
         });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+    
+        // Close mobile menu when clicking a menu link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-label', 'Abrir menú móvil');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
             });
         });
+    
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 80; // Alçada del header (~80px) + marge addicional (20px)
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - offset;
 
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    
         // Video fullscreen toggle
         const video = document.querySelector('.vertical-video');
         video.addEventListener('click', (e) => {
@@ -501,17 +531,17 @@
                 video.pause();
             }
         });
-
+    
         // Ensure video plays in any slide position
         video.addEventListener('canplay', () => {
             video.style.pointerEvents = 'auto';
         });
-
+    
         // Prevent Swiper from intercepting video clicks
         video.addEventListener('mousedown', (e) => {
             e.stopPropagation();
         });
-
+    
         // Reset video styles on transition end to prevent bugs
         video.addEventListener('transitionend', () => {
             if (!video.classList.contains('fullscreen')) {
@@ -521,36 +551,28 @@
                 video.style.objectFit = '';
             }
         });
-
+    
         // Handle contact form submission with mailto
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); // Prevent default form submission
 
-            // Get form values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
+        // Get form value
+        const message = document.getElementById('message').value.trim();
 
-            // Additional validation (HTML5 required already enforces non-empty)
-            if (!name || !email || !message) {
-                alert('Por favor, completa todos los campos.');
-                return;
-            }
+        // Create mailto link
+        const subject = encodeURIComponent('Consulta desde el formulario de Cats Rescat');
+        const body = encodeURIComponent(message);
+        const mailtoLink = `mailto:catsrescat.ebre@gmail.com?subject=${subject}&body=${body}`;
 
-            // Create mailto link
-            const subject = encodeURIComponent('Consulta desde el formulario de Cats Rescat');
-            const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nMensaje: ${message}`);
-            const mailtoLink = `mailto:joelcalvet@iesebre.com?subject=${subject}&body=${body}`;
-
-            // Open mailto link
-            try {
-                window.location.href = mailtoLink;
-                setTimeout(() => {
-                    alert('Se ha abierto tu cliente de correo. Por favor, revisa y envía el mensaje.');
-                }, 500);
-            } catch (error) {
-                alert('No se pudo abrir el cliente de correo. Por favor, envía un correo manualmente a catsrescat.ebre@gmail.com.');
-            }
+        // Open mailto link
+        try {
+            window.location.href = mailtoLink;
+            setTimeout(() => {
+                alert('Se ha abierto tu cliente de correo. Por favor, revisa y envía el mensaje.');
+            }, 500);
+        } catch (error) {
+            alert('No se pudo abrir el cliente de correo. Por favor, envía un correo manualmente a catsrescat.ebre@gmail.com.');
+        }
         });
     </script>
 </body>
