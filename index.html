@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link href="./assets/css/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Unified styling for carousel items */
         .carousel-item {
             height: 350px;
             overflow: hidden;
@@ -20,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #e5e7eb; /* bg-gray-200 */
+            background-color: #e5e7eb;
         }
         .carousel-item img, .carousel-item video {
             width: 100%;
@@ -115,9 +114,10 @@
     <!-- Header -->
     <header class="bg-gradient-to-r from-primary to-primary-dark shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center">
-                <i class="fas fa-paw text-white text-3xl mr-3 animate-float"></i>
-                <h1 class="text-white text-2xl font-bold tracking-wide">CATS RESCAT</h1>
+            <div>
+                <a href="#inicio">
+                    <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="logo">
+                </a>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-8">
@@ -309,10 +309,9 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <div class="flex items-center">
-                        <i class="fas fa-paw text-primary text-2xl mr-2"></i>
-                        <span class="text-xl font-bold">CATS RESCAT</span>
-                    </div>
+                    <a href="#inicio">
+                        <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="logo">
+                    </a>
                     <p class="text-gray-400 mt-2">Protegiendo gatos callejeros desde 2023</p>
                 </div>
                 
