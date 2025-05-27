@@ -175,6 +175,30 @@
         section#contacto {
             margin-bottom: 0 !important;
         }
+
+        .hero-paws {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 100%;
+            width: 600px;
+            height: auto;
+            object-fit: contain;
+            z-index: 10;
+        }
+        @media (max-width: 768px) {
+            .hero-paws {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-paws {
+                width: 800px;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 font-sans antialiased">
@@ -209,10 +233,22 @@
         </nav>
     </header>
 
+    <section id="hero" class="bg-primary py-16 text-white relative overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div class="max-w-5xl mx-auto px-4 relative z-20 flex flex-col items-center justify-center h-full">
+            <h1 class="text-5xl md:text-6xl font-bold text-center leading-tight animate-fade-in">
+                Cats Rescat
+            </h1>
+            <p class="text-lg md:text-xl mt-4 text-center max-w-2xl animate-fade-in delay-200">
+                Protegint gats de carrer amb amor i dedicació
+            </p>
+        </div>
+        <img src="./assets/img/paws.webp" alt="Quatre potetes de gat" class="hero-paws" loading="lazy">
+    </section>
+
     <!-- Carrusel con Swiper -->
     <section id="galeria" class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Nuestro Trabajo</h2>
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 relative after:content-[''] after:block after:w-20 after:h-1 after:bg-primary after:mx-auto after:mt-4">Galería</h2>
             
             <div class="swiper mySwiper swiper-container">
                 <div class="swiper-wrapper">
@@ -407,7 +443,7 @@
                     <a href="#galeria" class="inline-block">
                         <img src="./assets/img/logo.png" alt="Cats Rescat Logo" class="footer-logo mx-auto md:mx-0">
                     </a>
-                    <p class="mt-4 text-gray-300">Protegiendo gatos callejeros en Jesús con amor y dedicación desde 2023.</p>
+                    <p class="mt-4 text-gray-300">Protegiendo gatos callejeros en Jesús con amor y dedicación desde 2021.</p>
                 </div>
     
                 <!-- Redes sociales y contacto -->
